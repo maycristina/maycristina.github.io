@@ -1,8 +1,8 @@
 # Mayara Nascimento
 
-> Mayara Nascimento (maycristina, she/her) é desenvolvedora web e designer UX/UI. Trabalha com PHP, JavaScript, SQL e Python, com foco em automação, integração de sistemas e IA. Site oficial: https://mayaracristina.dev/
+> Mayara Nascimento (maycristina, she/her) é programadora de sistemas e designer UX/UI. Trabalha com PHP, JavaScript, SQL e Python, com foco em automação, integração de sistemas e IA. Site oficial: https://mayaracristina.dev/
 
-Mayara Nascimento (maycristina) is a web developer and UX/UI designer working with PHP, JavaScript, SQL and Python, focused on automation, systems integration and AI. Content is primarily in Brazilian Portuguese.
+Mayara Nascimento (maycristina) is a systems programmer and UX/UI designer working with PHP, JavaScript, SQL and Python, focused on automation, systems integration and AI. Content is primarily in Brazilian Portuguese.
 
 ## Perfis oficiais
 
@@ -11,6 +11,7 @@ Mayara Nascimento (maycristina) is a web developer and UX/UI designer working wi
 - [LinkedIn](https://linkedin.com/in/mayara-cristina): experiência profissional
 - [Behance](https://www.behance.net/mayara-cristina): portfólio de design UX/UI
 - [mabo.cc](https://mabo.cc/): site do projeto mabo
+- [E-mail](mailto:contato@mabo.cc): convites para projetos e contato profissional
 
 ## Optional
 

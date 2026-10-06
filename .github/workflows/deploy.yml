@@ -1,0 +1,60 @@
+name: Deploy site
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+  repository_dispatch:
+    types: [private-updated]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Checkout dos assets
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ secrets.PRIVATE_REPO }}
+          token: ${{ secrets.PRIVATE_REPO_TOKEN }}
+          path: _ext
+          persist-credentials: false
+
+      - name: Montar o site
+        run: |
+          mkdir -p _site/assets
+          rsync -a --exclude='.git' --exclude='.github' --exclude='_ext' --exclude='_site' ./ _site/
+          cp _ext/dist/app.min.js _site/assets/app.min.js
+          rm -rf _ext
+
+      - name: Conferir o conteúdo publicado
+        run: |
+          test -s _site/assets/app.min.js
+          if find _site -name '*.js' ! -name 'app.min.js' | grep -q .; then
+            echo "::error::arquivo JS inesperado em _site"; exit 1
+          fi
+
+      - name: Upload do artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
